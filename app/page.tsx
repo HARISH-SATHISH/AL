@@ -5,7 +5,7 @@ import Recentlog from "./components/Recentlog";
 
 export default function Home() {
   return (
-    <div style={{ position: 'relative', height: '100vh' }}>
+    <div style={{ position: 'relative', height: '100vh' }} className=" bg-black">
       <VideoBg />
       <Navbar/> 
       <Homecon/>
