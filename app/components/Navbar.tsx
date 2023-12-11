@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import React from 'react'
+import { GiFallingStar } from "react-icons/gi";
 
 const Navbar = () => {
     return (
         <div className='cursor-pointer p-2 text-white flex flex-row justify-between items-center mx-[10%] mt-[1%] border border-white'>
-            <span>logo</span>
+            <span className=' text-2xl border border-white rounded-full p-1'><GiFallingStar/></span>
             <nav className='mr-[7%]'>
                 <ul className='flex flex-row '>
                     <li className='mr-[10%] cursor-pointer p-1'>Home</li>
