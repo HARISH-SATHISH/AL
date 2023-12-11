@@ -8,7 +8,7 @@ const Navbar = () => {
             <nav className='mr-[7%]'>
                 <ul className='flex flex-row '>
                     <li className='mr-[10%] cursor-pointer p-1'>Home</li>
-                    <li className='mr-[10%] cursor-pointer p-1'>About</li>
+                    <li className='mr-[10%] cursor-pointer p-1'><Link href='./api/about'>About</Link></li>
                     <li className='mr-[10%] cursor-pointer p-1'><Link href='./api/blogs'>Blogs</Link></li>
                     <li className='mr-[10%] cursor-pointer p-1'><Link href='./api/logs'>Logs</Link></li>
                 </ul>
