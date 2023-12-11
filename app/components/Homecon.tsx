@@ -10,6 +10,7 @@ const Homecon = () => {
         exploring and contributing to the wonders of the cosmos.
       </p>
       <button className=' p-2 mt-4 border border-white hover:bg-white hover:text-black '>Join_Now</button>
+      <button className=' ml-5 p-2 mt-4 border border-white hover:bg-white hover:text-black '>Login</button>
       <p className=' text-xs mt-1'>Login if you have already joined!</p>
     </div>
   )
