@@ -19,4 +19,7 @@
   .scrollbar::-webkit-scrollbar-track {
     background-color: transparent; /* color of the track */
   }
-  
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
