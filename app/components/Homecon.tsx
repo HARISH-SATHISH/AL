@@ -1,3 +1,4 @@
+"use client"
 import Link from 'next/link';
 import React from 'react'
 import { FcGoogle } from "react-icons/fc";
