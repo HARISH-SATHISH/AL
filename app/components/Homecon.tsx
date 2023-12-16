@@ -11,7 +11,7 @@ const Homecon = () => {
         valuable observational data. Join Astronomy Log to be part of a global community dedicated to
         exploring and contributing to the wonders of the cosmos.
       </p>
-      <button className=' p-2 mt-4 border border-white hover:bg-white hover:text-black ' onClick={()=>signIn("google")}><span className='text-2xl'><FcGoogle /></span>auth</button>
+      <button onClick={()=>signIn("google")} className=' p-2 mt-4 border border-white hover:bg-white hover:text-black ' ><span className='text-2xl'><FcGoogle /></span>auth</button>
       <p className=' text-xs mt-1'>login here using google auth</p>
     </div>
   )
