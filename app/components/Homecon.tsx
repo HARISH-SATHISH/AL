@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react'
 import { FcGoogle } from "react-icons/fc";
-
+import { signIn } from 'next-auth/react';
 const Homecon = () => {
   return (
     <div className=' text-white border border-white mx-[10%] px-2 py-4 mt-7'>
@@ -11,7 +11,7 @@ const Homecon = () => {
         valuable observational data. Join Astronomy Log to be part of a global community dedicated to
         exploring and contributing to the wonders of the cosmos.
       </p>
-      <button className=' p-2 mt-4 border border-white hover:bg-white hover:text-black '><Link href="./api/auth/signin" className='flex'><span className='text-2xl'><FcGoogle /></span>auth</Link></button>
+      <button className=' p-2 mt-4 border border-white hover:bg-white hover:text-black ' onClick={()=>signIn("google")}><span className='text-2xl'><FcGoogle /></span>auth</button>
       <p className=' text-xs mt-1'>login here using google auth</p>
     </div>
   )
