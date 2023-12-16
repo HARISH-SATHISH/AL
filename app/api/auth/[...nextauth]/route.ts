@@ -20,7 +20,11 @@ const authOptions:NextAuthOptions={
         if(!profile?.email)
          throw new Error("no email")
         else
+        {
+         console.log(account)
+         console.log(profile)
         return true
+        }
     }
  }
 }
