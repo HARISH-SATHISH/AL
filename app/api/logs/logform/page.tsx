@@ -21,7 +21,7 @@ const page = () => {
 
     // Update state based on input type
     if (name === 'media') {
-      setFormData({ ...formData, [name]: files[0] });
+      setFormData({ ...formData, [name]: files});
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -111,6 +111,7 @@ const page = () => {
             accept="image/*,video/*"
             onChange={handleChange}
             className="mt-1 p-2 w-full border border-gray-300  focus:outline-none focus:ring focus:border-white"
+            multiple
           />
         </div>
 
