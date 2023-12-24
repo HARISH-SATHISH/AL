@@ -21,8 +21,7 @@ const authOptions:NextAuthOptions={
          throw new Error("no email ")
         else
         {
-         console.log("pro"+profile)
-         return true
+         throw new Error("email ")
         }
     }
  }
