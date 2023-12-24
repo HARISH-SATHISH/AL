@@ -21,7 +21,7 @@ const authOptions:NextAuthOptions={
          throw new Error("no email ")
         else
         {
-         throw new Error("email ")
+         return true
         }
     }
  }
