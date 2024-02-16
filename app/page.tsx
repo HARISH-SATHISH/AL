@@ -3,8 +3,12 @@ import Navbar from "./components/Navbar";
 import Homecon from "./components/Homecon";
 import Recentlog from "./components/Recentlog";
 
+
+
+
 export default function Home() {
   return (
+    
     <div style={{ position: 'relative', height: '100vh' }} >
       <VideoBg />
       <Navbar /> 
@@ -16,6 +20,6 @@ export default function Home() {
       </div> */}
       <Recentlog/>
     </div>
-
+    
   )
 }
