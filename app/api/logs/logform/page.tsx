@@ -2,10 +2,15 @@
 import VideoBackground from '@/app/components/VideoBg';
 import React, { useState } from 'react';
 import "../../../../app/globals.css"
+import { useSession } from 'next-auth/react';
 
 const page = () => {
 
+ 
+
   const celestialObjectOptions = ['Star', 'Planet', 'Galaxy', 'Nebula', 'Cluster', 'Unknown'];
+
+
 
   const [formData, setFormData] = useState({
     celestialObject: celestialObjectOptions[0], // Default to the first option
@@ -13,6 +18,7 @@ const page = () => {
     deviceUsed: '',
     observationNotes: '',
     media: null,
+   
   });
 
   // Handler for form input changes

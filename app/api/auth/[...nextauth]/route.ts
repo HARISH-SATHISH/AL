@@ -1,3 +1,6 @@
+import { graphQLClient } from '@/clients/api'
+import { GetCurrentUserQuery, User, Userdata } from '@/gql/graphql'
+import { getCurrentUser } from '@/graphql/query/user'
 import {NextAuthOptions} from 'next-auth'
 import NextAuth from 'next-auth/next'
 import GoogleProvider from 'next-auth/providers/google'
@@ -21,6 +24,16 @@ const authOptions:NextAuthOptions={
          throw new Error("no email ")
         else
         {
+         // await graphQLClient.request(getCurrentUser,paylod)
+         const payload:Userdata={
+            email:profile?.email,
+            name:profile.name,
+            imgUrl:profile.image
+         }
+         console.log("--------")
+         const   user = await graphQLClient.request(getCurrentUser,{ token: payload });
+         console.log("user---",user)
+         // if(user.getCurrentUser?.id) window.localStorage.setItem("id",`user.getCurrentUser.id`)
          return true
         }
     }

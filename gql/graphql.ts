@@ -59,6 +59,11 @@ export type Query = {
   hello?: Maybe<Scalars['String']['output']>;
 };
 
+
+export type QueryGetCurrentUserArgs = {
+  token?: InputMaybe<Userdata>;
+};
+
 export type User = {
   __typename?: 'User';
   blogs?: Maybe<Array<Maybe<Blog>>>;
@@ -84,10 +89,24 @@ export type Logdata = {
   obj?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type Userdata = {
+  email?: InputMaybe<Scalars['String']['input']>;
+  imgUrl?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type GetAllLogsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAllLogsQuery = { __typename?: 'Query', getAllLogs?: Array<{ __typename?: 'Log', note?: string | null, obj?: string | null, author?: { __typename?: 'User', imgUrl?: string | null } | null } | null> | null };
 
+export type GetCurrentUserQueryVariables = Exact<{
+  token: Userdata;
+}>;
+
+
+export type GetCurrentUserQuery = { __typename?: 'Query', getCurrentUser?: { __typename?: 'User', id: number, email: string, name?: string | null } | null };
+
 
 export const GetAllLogsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetAllLogs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getAllLogs"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"note"}},{"kind":"Field","name":{"kind":"Name","value":"obj"}},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imgUrl"}}]}}]}}]}}]} as unknown as DocumentNode<GetAllLogsQuery, GetAllLogsQueryVariables>;
+export const GetCurrentUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCurrentUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"token"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"userdata"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getCurrentUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"token"},"value":{"kind":"Variable","name":{"kind":"Name","value":"token"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<GetCurrentUserQuery, GetCurrentUserQueryVariables>;
