@@ -1,10 +1,9 @@
 "use client"
 import React from 'react'
 import '../globals.css'
-import { graphQLClient } from '@/clients/api'
-import { getAllLogs } from '@/graphql/query/log'
+
 import { useGetAllLogs } from '@/hooks/log'
-import { useQuery } from '@tanstack/react-query'
+
 
 const Recentlog = () => {
 
@@ -15,7 +14,7 @@ const Recentlog = () => {
     //  })
     const data=useGetAllLogs()
 
-     console.log(data?.data?.getAllLogs)
+     
     
     return (
         

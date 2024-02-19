@@ -33,7 +33,6 @@ const authOptions:NextAuthOptions={
          console.log("--------")
          const   user = await graphQLClient.request(getCurrentUser,{ token: payload });
          console.log("user---",user)
-         // if(user.getCurrentUser?.id) window.localStorage.setItem("id",`user.getCurrentUser.id`)
          return true
         }
     }

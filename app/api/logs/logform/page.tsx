@@ -1,26 +1,41 @@
 "use client"
 import VideoBackground from '@/app/components/VideoBg';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import "../../../../app/globals.css"
 import { useSession } from 'next-auth/react';
+import { useCreateLog } from '@/hooks/log';
+ import { Logdata } from '@/gql/graphql';
+import { graphQLClient } from '@/clients/api';
+import { createLog } from '@/graphql/mutation/log';
+
 
 const page = () => {
 
  
 
+  const user=useSession()
+  var mail=''
+  if(user.data?.user?.email)
+  {
+    mail=user.data.user.email
+  }
+
+ 
+
   const celestialObjectOptions = ['Star', 'Planet', 'Galaxy', 'Nebula', 'Cluster', 'Unknown'];
 
-
-
-  const [formData, setFormData] = useState({
-    celestialObject: celestialObjectOptions[0], // Default to the first option
+ 
+  const [formData, setFormData] = useState<Logdata>({
+    obj: celestialObjectOptions[0], // Default to the first option
     dateAndTime: '',
-    deviceUsed: '',
-    observationNotes: '',
-    media: null,
-   
+    device: '',
+    note: '',
+    media: '',
+    email:mail,
   });
 
+  const {mutate}=useCreateLog()
+ 
   // Handler for form input changes
   const handleChange = (e: any) => {
     const { name, value, files } = e.target;
@@ -36,9 +51,32 @@ const page = () => {
   // Handler for form submission
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Add logic here to handle the form submission (e.g., send data to a backend server)
+    
     console.log('Form Submitted:', formData);
   };
+  const initialFormData = {
+    obj: celestialObjectOptions[0], // Default to the first option
+    dateAndTime: '',
+    device: '',
+    note: '',
+    media: '',
+    authorId: 0,
+    email: mail
+};
+
+const payload= {
+  "dateAndTime": `${formData.dateAndTime}`,
+  "device": `${formData.device}`,
+  "email": `${formData.email}`,
+  "media": `${formData.media}`,
+  "note": `${formData.note}`,
+  "obj": `${formData.obj}`
+}
+  const handleCreateTweet=()=>{graphQLClient.request(createLog,{createLogPayload2:payload})
+window.alert("form sum")
+setFormData(initialFormData)
+}
+ 
 
   return (
     <div className=" mx-[10%] mt-4">
@@ -48,11 +86,11 @@ const page = () => {
 
         {/* Celestial Object Dropdown */}
         <div className="mb-4">
-          <label htmlFor="celestialObject" className="block text-sm font-medium">Celestial Object</label>
+          <label htmlFor="obj" className="block text-sm font-medium">Celestial Object</label>
           <select
-            id="celestialObject"
-            name="celestialObject"
-            value={formData.celestialObject}
+            id="obj"
+            name="obj"
+            value={formData.obj}
             onChange={handleChange}
             className="mt-1 p-2 w-full border border-gray-300  focus:outline-none focus:ring focus:border-white bg-transparent"
             required
@@ -82,9 +120,9 @@ const page = () => {
           <label htmlFor="deviceUsed" className="block text-sm font-medium">Device Used</label>
           <input
             type="text"
-            id="deviceUsed"
-            name="deviceUsed"
-            value={formData.deviceUsed}
+            id="device"
+            name="device"
+            value={formData.device}
             onChange={handleChange}
             placeholder='deviceused'
             className="mt-1 p-2 w-full border border-gray-300  focus:outline-none focus:ring focus:border-white bg-transparent text-white"
@@ -96,9 +134,9 @@ const page = () => {
         <div className="mb-6">
           <label htmlFor="observationNotes" className="block text-sm font-medium">Observation Notes</label>
           <textarea
-            id="observationNotes"
-            name="observationNotes"
-            value={formData.observationNotes}
+            id="note"
+            name="note"
+            value={formData.note}
             onChange={handleChange}
             rows={4}
             placeholder='observationNotes'
@@ -123,7 +161,7 @@ const page = () => {
 
         {/* Submit Button */}
         <div className="flex items-center justify-end">
-          <button
+          <button onClick={handleCreateTweet}
             type="submit"
             className="px-4 py-2 bg-transparent text-white  hover:bg-white hover:text-black border border-white focus:outline-none focus:ring focus:border-white"
           >

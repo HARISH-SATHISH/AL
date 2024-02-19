@@ -1,12 +1,14 @@
 "use client"
 
-import React from 'react'
+import React, { use } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { signIn,signOut,useSession} from 'next-auth/react';
 const Homecon = () => {
   const user=useSession()
-  console.log(user)
+  console.log(user.data?.user?.image)
+  
   if(user?.data==undefined)
+  
   return (
     <div className=' text-white border border-white mx-[10%] px-2 py-4 mt-7'>
       <h1 className=' text-5xl bg-white text-black p-2 inline-block'> welcome to AstLog!!!</h1>
