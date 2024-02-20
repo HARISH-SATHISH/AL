@@ -14,7 +14,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\nmutation CreateLog($createLogPayload2: logdata) {\n    createLog(payload: $createLogPayload2) {\n      author {\n        id\n      }\n      media\n      note\n      obj\n    }\n  }\n  ": types.CreateLogDocument,
-    "\n\nquery GetAllLogs {\n    getAllLogs {\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n": types.GetAllLogsDocument,
+    "\nquery GetAllBlogs {\n    getAllBlogs {\n      author {\n        id\n      }\n      content\n      title\n      id\n    }\n  }": types.GetAllBlogsDocument,
+    "\n\nquery GetAllLogs {\n    getAllLogs {\n      id\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n": types.GetAllLogsDocument,
     "#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n }\n": types.GetCurrentUserDocument,
 };
 
@@ -39,7 +40,11 @@ export function graphql(source: "\nmutation CreateLog($createLogPayload2: logdat
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n\nquery GetAllLogs {\n    getAllLogs {\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n"): (typeof documents)["\n\nquery GetAllLogs {\n    getAllLogs {\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n"];
+export function graphql(source: "\nquery GetAllBlogs {\n    getAllBlogs {\n      author {\n        id\n      }\n      content\n      title\n      id\n    }\n  }"): (typeof documents)["\nquery GetAllBlogs {\n    getAllBlogs {\n      author {\n        id\n      }\n      content\n      title\n      id\n    }\n  }"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n\nquery GetAllLogs {\n    getAllLogs {\n      id\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n"): (typeof documents)["\n\nquery GetAllLogs {\n    getAllLogs {\n      id\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

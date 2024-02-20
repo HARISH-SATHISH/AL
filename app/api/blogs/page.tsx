@@ -5,6 +5,7 @@ import '../../../app/globals.css'
 import Link from 'next/link'
 
 const page = () => {
+  
   return (
     <div>
       <VideoBackground />
