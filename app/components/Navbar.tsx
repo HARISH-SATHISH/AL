@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <div className=' p-2 text-white flex flex-row justify-between items-center mx-[10%] mt-[1%] border border-white'>
             <span className='cursor-pointer text-2xl border border-white rounded-full p-1  hover:bg-white hover:text-black '><GiFallingStar/></span>
-            <nav className='mr-[7%]'>
+            <nav className='mr-[10%]'>
                 <ul className='flex flex-row '>
                     <li className='mr-[10%] cursor-pointer p-1'>Home</li>
                     <li className='mr-[10%] cursor-pointer p-1'><Link href='./api/about'>About</Link></li>
