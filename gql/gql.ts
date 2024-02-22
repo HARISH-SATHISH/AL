@@ -16,6 +16,7 @@ const documents = {
     "\nmutation CreateLog($createLogPayload2: logdata) {\n    createLog(payload: $createLogPayload2) {\n      author {\n        id\n      }\n      media\n      note\n      obj\n    }\n  }\n  ": types.CreateLogDocument,
     "\nquery GetAllBlogs {\n    getAllBlogs {\n      author {\n        id\n      }\n      content\n      title\n      id\n    }\n  }": types.GetAllBlogsDocument,
     "\n\nquery GetAllLogs {\n    getAllLogs {\n      id\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n": types.GetAllLogsDocument,
+    "\n\nquery GetAllProject {\n    getAllProject {\n      id\n      title\n      desc\n      location\n      modId\n    }\n  }\n": types.GetAllProjectDocument,
     "#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n }\n": types.GetCurrentUserDocument,
 };
 
@@ -45,6 +46,10 @@ export function graphql(source: "\nquery GetAllBlogs {\n    getAllBlogs {\n     
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n\nquery GetAllLogs {\n    getAllLogs {\n      id\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n"): (typeof documents)["\n\nquery GetAllLogs {\n    getAllLogs {\n      id\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n\nquery GetAllProject {\n    getAllProject {\n      id\n      title\n      desc\n      location\n      modId\n    }\n  }\n"): (typeof documents)["\n\nquery GetAllProject {\n    getAllProject {\n      id\n      title\n      desc\n      location\n      modId\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
