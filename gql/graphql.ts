@@ -77,6 +77,7 @@ export type User = {
 export type BlogData = {
   authorId?: InputMaybe<Scalars['Int']['input']>;
   content?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
