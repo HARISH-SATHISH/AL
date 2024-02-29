@@ -17,7 +17,9 @@ const documents = {
     "\nquery GetAllBlogs {\n    getAllBlogs {\n      author {\n        id\n      }\n      content\n      title\n      id\n    }\n  }": types.GetAllBlogsDocument,
     "\n\nquery GetAllLogs {\n    getAllLogs {\n      id\n      note\n      obj\n      author {\n        imgUrl\n      }\n    }\n  }\n": types.GetAllLogsDocument,
     "\n\nquery GetAllProject {\n    getAllProject {\n      id\n      title\n      desc\n      location\n      modId\n    }\n  }\n": types.GetAllProjectDocument,
-    "#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n }\n": types.GetCurrentUserDocument,
+    "#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n },\n \n": types.GetCurrentUserDocument,
+    "\n  query GetAllUser {\n    getAllUser {\n      id\n      logs {\n        id\n      }\n      blogs {\n        id\n      }\n    }\n   \n  }\n  ": types.GetAllUserDocument,
+    "#graphql\nquery VerifyMod($payload: cred) {\n  verifyMod(payload: $payload) {\n    id\n  }\n}\n": types.VerifyModDocument,
 };
 
 /**
@@ -53,7 +55,15 @@ export function graphql(source: "\n\nquery GetAllProject {\n    getAllProject {\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n }\n"): (typeof documents)["#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n }\n"];
+export function graphql(source: "#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n },\n \n"): (typeof documents)["#graphql\n\n query GetCurrentUser($token:userdata!){\n    getCurrentUser(token:$token){\n      id\n      email\n      name\n    }\n },\n \n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query GetAllUser {\n    getAllUser {\n      id\n      logs {\n        id\n      }\n      blogs {\n        id\n      }\n    }\n   \n  }\n  "): (typeof documents)["\n  query GetAllUser {\n    getAllUser {\n      id\n      logs {\n        id\n      }\n      blogs {\n        id\n      }\n    }\n   \n  }\n  "];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "#graphql\nquery VerifyMod($payload: cred) {\n  verifyMod(payload: $payload) {\n    id\n  }\n}\n"): (typeof documents)["#graphql\nquery VerifyMod($payload: cred) {\n  verifyMod(payload: $payload) {\n    id\n  }\n}\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};
